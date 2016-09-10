@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TestApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="siteController">
+
+    <div class="container">
+        <ng-easy-table data-id="myTest" data-columns="{{columns}}" data-url-feed="https://jsonplaceholder.typicode.com/posts"></ng-easy-table>
+    </div>
+
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../ng-easy-table.js"></script>
+
+    <script>
+        var app = angular.module('TestApp', ['sugarScope']);
+
+        app.controller('siteController', function($scope, $rootScope){
+            $scope.columns = [
+                {
+                    title: 'Id',
+                    type: 'text',
+                    value: 'id',
+                    sortable: true
+                },
+                {
+                    title: 'Title',
+                    type: 'text',
+                    value: 'title'
+                },
+                {
+                    title: 'Body',
+                    type: 'text',
+                    value: 'body'
+                }
+            ];
+
+            $rootScope.$on('myTest.ngTable.selectRow', function(evt, row){
+                console.log(row);
+            });
+        });
+    </script>
+</body>
+</html>

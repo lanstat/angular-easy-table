@@ -1,0 +1,26 @@
+{
+  "name": "angular-easy-table",
+  "homepage": "https://github.com/lanstat/angular-table",
+  "authors": [
+    "Juan Javier Garson Aparicio <lanstat@gmail.com>"
+  ],
+  "description": "Plugin that provides data tables functions",
+  "main": "ng-easy-table.js",
+  "keywords": [
+    "angular",
+    "table",
+    "data"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
