@@ -1,6 +1,6 @@
 var app = angular.module('sugarScope', []);
 
-app.directive('ngEasyTable', function($http){
+app.directive('ngEasyTable', ['$http', function($http){
   var _allEntries = [];
   var entries = [];
   var currentEntryIndex = 0;
@@ -51,7 +51,7 @@ app.directive('ngEasyTable', function($http){
 
       loadContent(scope);
     },
-    controller: function($scope, $rootScope){
+    controller: ['$scope', '$rootScope', function($scope, $rootScope){
       $scope.body = [];
       $scope.entriesShown = '10';
       $scope.pages = [];
@@ -150,7 +150,7 @@ app.directive('ngEasyTable', function($http){
 		 loadContent($scope);
 		 callback();
 	  });
-    },
+    }],
     template: function(){
       return '' +
         '<div class="row form-inline" style="padding: 5px">' +
@@ -213,9 +213,9 @@ app.directive('ngEasyTable', function($http){
         '</div>';
     }
   };
-});
+}]);
 
-app.directive('tableRow', function($compile, $rootScope){
+app.directive('tableRow', ['$compile', '$rootScope', function($compile, $rootScope){
   return {
     restrict: 'A',
     scope: {
@@ -262,7 +262,7 @@ app.directive('tableRow', function($compile, $rootScope){
 	  element.html('').append( $compile( content )( scope ) );
     }
   };
-});
+}]);
 
 app.filter('preserveFunctions', function(){
 	var parseString = function(data){
